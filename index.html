@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar-app">
+        <div class="calendar">
+            <div class="month">
+                <span class="prev">&#10094;</span>
+                <span class="next">&#10095;</span>
+                <select id="month-select">
+                    <option value="0">January</option>
+                    <option value="1" selected>February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                </select>
+                <select id="year-select">
+                    <option value="2022">2022</option>
+                    <option value="2023" selected>2023</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days">
+                <!-- Days will be populated by JavaScript -->
+            </div>
+        </div>
+        <div class="birthdays">
+            <h2>Favourite Birthdays</h2>
+            <div id="birthday-list">
+                <div class="birthday-month">
+                    <h3>February 3</h3>
+                    <p>Anna Apple, American writer</p>
+                </div>
+                <div class="birthday-month">
+                    <h3>May 14</h3>
+                    <p>Bob Banana,</p>
+                    
+                </div>
+                
+            </div>
+            <div class="search-section">
+                <h3>Birthdays on <span id="selected-date">February 3</span></h3>
+                <input type="text" id="search" placeholder="Search">
+                <div id="search-results">
+                    <p><span class="star">&#9733;</span> Anna Apple, American writer</p>
+                    
+                </div>
+            </div>
+            <div class="add-birthday">
+                <h3>Add Birthday</h3>
+                <form id="add-birthday-form">
+                    <input type="text" id="name" placeholder="Name" required>
+                    
+                    <input type="date" id="birthday-date" required>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 125vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.calendar-app {
+    display: flex;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.calendar {
+    width: 300px;
+    margin-right: 50px;
+}
+
+.month {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.month select {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+}
+
+.prev, .next {
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+}
+
+.weekdays, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+}
+
+.weekdays div, .days div {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.weekdays div {
+    background: #e0e0e0;
+    font-weight: bold;
+}
+
+.days div {
+    background: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 1px solid #e0e0e0;
+}
+
+.days div:hover {
+    background: #d4d4d4;
+}
+
+.days div.selected {
+    background: #007bff;
+    color: white;
+}
+
+.days div.today {
+    background: #ffeb3b;
+    color: #000;
+}
+
+.birthdays {
+    width: 300px;
+}
+
+.birthday-month {
+    margin-bottom: 20px;
+}
+
+.search-section {
+    margin-top: 20px;
+}
+
+.search-section input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#search-results p {
+    margin: 5px 0;
+}
+
+.star {
+    color: blue;
+    margin-right: 10px;
+}
+
+.add-birthday {
+    margin-top: 20px;
+}
+
+#add-birthday-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#add-birthday-form input, #add-birthday-form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#add-birthday-form button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background 0.3s;
+}
+
+#add-birthday-form button:hover {
+    background-color: #0056b3;
+}
+
+
+</style>
